@@ -8,11 +8,9 @@ fn main(){
         let (first, last) = line.split_at(line.len()/2);
         let mut chur_char = 'a';
         for letter in first.chars() {
-            for letter2 in last.chars() {
-                if letter == letter2 {
-                    chur_char = letter;
-                    break;
-                }
+            if last.contains(letter) {
+                chur_char = letter;
+                break;
             }
         }
         sum += match chur_char as u32 {
