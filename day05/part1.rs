@@ -1,4 +1,5 @@
 use std::fs;
+
 fn main() {
     let input: Vec<String> = String::from_utf8(fs::read("input.txt").unwrap()).unwrap().split("\n\n").map(String::from).collect();
     let mut stacks: [Vec<String>; 9] = Default::default();
@@ -16,8 +17,9 @@ fn main() {
             .filter_map(|(i, e)| ((i + 1) % 2 == 0).then(|| e.parse::<i32>().unwrap()))
             .collect();
         for _ in 0..values[0] {
-            stacks[values[2] as usize - 1].push(stacks[values[1] as usize - 1].last().unwrap().to_string());
-            stacks[values[1] as usize - 1].pop();
+            if let Some(ch) = stacks[values[1] as usize - 1].pop(){
+                stacks[values[2] as usize - 1].push(ch);
+            }
         }
     }
 

@@ -13,13 +13,13 @@ fn main() {
 
     for line in input[1].lines() {
         let values: Vec<_> = line.split(' ').enumerate()
-            .filter_map(|(i, e)| ((i + 1) % 2 == 0).then(|| e.parse::<i32>().unwrap()))
+            .filter_map(|(i, e)| ((i + 1) % 2 == 0).then(|| e.parse::<usize>().unwrap()))
             .collect();
-        let len = stacks[values[1] as usize - 1].len();
-        let mut top_stack = stacks[values[1] as usize - 1].as_slice()[len - values[0] as usize..].to_vec();
-        stacks[values[2] as usize - 1].append(&mut top_stack);
+        let len = stacks[values[1] - 1].len();
+        let mut top_stack = stacks[values[1] - 1].as_slice()[len - values[0]..].to_vec();
+        stacks[values[2] - 1].append(&mut top_stack);
         for _ in 0..values[0] {
-            stacks[values[1] as usize - 1].pop();
+            stacks[values[1] - 1].pop();
         }
     }
 
