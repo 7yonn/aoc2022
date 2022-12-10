@@ -1,6 +1,0 @@
-#!/bin/sh
-
-set -xe
-
-rustc -o sol2 sol2.rs
-time ./sol2
