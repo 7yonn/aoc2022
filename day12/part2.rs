@@ -48,7 +48,7 @@ fn main() {
             }
         }
         let end_dist = dist[end.0 as usize][end.1 as usize];
-        if end_dist != 0 {
+        if visited[end.0 as usize][end.1 as usize] {
             point_distances.push(end_dist);
         }
     }
